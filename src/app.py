@@ -1,5 +1,4 @@
 import json
-from __future__ import unicode_literals
 import codebase as cb
 
 # import requests
@@ -7,13 +6,12 @@ import codebase as cb
 
 def lambda_handler(event, context):
 
-    input_payload = json.loads(event['body'])
+    input_payload = event['body']
     
     out = cb.process(input_payload)
 
     return {
         "statusCode": 200,
-        "body": json.dumps({            
-        "message": json.dumps(out)
-        }),
+        "headers": {'Content-type' : 'audio/mpeg'},
+        "body": buffer.toString('base64'),
     }

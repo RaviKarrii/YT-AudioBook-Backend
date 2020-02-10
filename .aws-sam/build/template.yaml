@@ -7,7 +7,7 @@ Description: 'YT-AudioBook
   '
 Globals:
   Function:
-    Timeout: 10
+    Timeout: 100
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
