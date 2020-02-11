@@ -7,7 +7,7 @@ import os
 
 
 ydl_opts = {
-    'outtmpl': 'downloads/%(title)s.%(ext)s',
+    'outtmpl': 'downloads/%(id)s.%(ext)s',
     'format': 'bestaudio/best',
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
