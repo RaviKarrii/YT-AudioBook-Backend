@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from flask import request, jsonify
+from flask import request, jsonify, send_from_directory, current_app
 import flask
 import youtube_dl
 from os import walk
@@ -25,7 +25,7 @@ def process(Url):
     print(filep)
     return "Succesfull"
 
-@app.route('/download/', methods=['GET'])
+@app.route('/upload/', methods=['GET'])
 def home():
     if 'url' in request.args:
         url = str(request.args['url'])
@@ -42,7 +42,8 @@ def list():
 
 @app.route('/download/<path:filename>', methods=['GET', 'POST'])
 def download(filename):
-    uploads = os.path.join(current_app.root_path, app.config['downloads'])
+    uploads = os.path.join(current_app.root_path, 'downloads')
+    print(uploads)
     return send_from_directory(directory=uploads, filename=filename)
 
 app.run()
