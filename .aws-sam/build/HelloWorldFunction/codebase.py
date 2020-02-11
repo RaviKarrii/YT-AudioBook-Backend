@@ -3,6 +3,7 @@ import youtube_dl
 
 
 ydl_opts = {
+    'outtmpl': 'tmp/%(extractor_key)s/%(extractor)s-%(id)s-%(title)s.%(ext)s',
     'format': 'bestaudio/best',
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
