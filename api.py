@@ -3,6 +3,7 @@ from flask import request, jsonify
 import flask
 import youtube_dl
 from os import walk
+import os
 
 
 ydl_opts = {
@@ -38,5 +39,10 @@ def list():
     for (dirpath, dirnames, filenames) in walk("downloads"):
         f.extend(filenames)
     return ", ".join(f)
+
+@app.route('/download/<path:filename>', methods=['GET', 'POST'])
+def download(filename):
+    uploads = os.path.join(current_app.root_path, app.config['downloads'])
+    return send_from_directory(directory=uploads, filename=filename)
 
 app.run()
