@@ -1,2 +1,6 @@
 
 *.mp3
+.DS_Store
+downloads/.DS_Store
+*.webm
+downloads/.DS_Store
